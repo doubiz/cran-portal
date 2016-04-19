@@ -1,6 +1,6 @@
 class Package < ActiveRecord::Base
   #Validations
-  validates_presence_of :name, :version, :title
+  validates_presence_of :name, :version
   validates_uniqueness_of :name
 
   #Relations

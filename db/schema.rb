@@ -31,13 +31,16 @@ ActiveRecord::Schema.define(version: 20160419110231) do
   end
 
   create_table "packages", force: :cascade do |t|
-    t.string   "name",        limit: 255,   null: false
-    t.string   "version",     limit: 255
-    t.string   "title",       limit: 255
+    t.string   "name",         limit: 255,   null: false
+    t.string   "version",      limit: 255
+    t.string   "title",        limit: 255
     t.datetime "date"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description",  limit: 65535
+    t.string   "dependencies", limit: 255
+    t.string   "imports",      limit: 255
+    t.string   "license",      limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "packages", ["name"], name: "index_packages_on_name", using: :btree
