@@ -36,7 +36,7 @@ class PackageScraper
 
   def translate_data(hash)
     hash.each do |key, value|
-      @package_info[DICTIONARY[key]] ||= value if DICTIONARY[key].present?
+      @package_info[DICTIONARY[key]] ||= value.encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '') if DICTIONARY[key].present?
     end
   end
 
@@ -53,7 +53,7 @@ class PackageScraper
     CONTRIBUTORS_KEYS.each do |key|
       if hash[key].present?
         contributors = hash[key].encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
-                        .gsub(/\[[a-zA-Z]*,*\s*[a-zA-Z]*\]/,"").split(",")
+                        .gsub(/\[[a-zA-Z]*,*\s*[a-zA-Z]*\]/,"").split(/\sand\s|,/)
         contributors.each do |contributor|
           splitted = contributor.split("<")
           name = splitted[0].split("[")[0].strip
