@@ -6,6 +6,9 @@ class CreatePackages < ActiveRecord::Migration
       t.string :title
       t.datetime :date
       t.text :description
+      t.string :dependencies
+      t.string :imports
+      t.string :license
 
       t.timestamps null: false
     end

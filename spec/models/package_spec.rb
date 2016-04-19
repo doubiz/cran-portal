@@ -6,7 +6,6 @@ RSpec.describe Package, type: :model do
   describe "Validation" do
     it{expect(package).to validate_presence_of(:name)}
     it{expect(package).to validate_presence_of(:version)}
-    it{expect(package).to validate_presence_of(:title)}
   end
 
   describe "Relations" do 

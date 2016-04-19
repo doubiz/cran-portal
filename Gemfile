@@ -27,6 +27,8 @@ gem 'haml'
 
 gem "twitter-bootstrap-rails"
 
+gem "treetop-dcf"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
