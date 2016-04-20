@@ -17,5 +17,9 @@
               =text_field_tag :q, '',class:'form-control', placeholder: "Search for packages", autocomplete: :off
             
               =button_tag 'Search' , id: "submit", class: "btn btn-primary btn-block", type: :submit
+        .count
+          %div
+            %b Package count:
+            = Package.count
     .content
       = yield
