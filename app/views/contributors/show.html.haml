@@ -1,0 +1,38 @@
+.container
+	.jumbotron
+		%div
+			%b
+				Name:
+			=@contributor.name
+		-if @contributor.email.present?
+			%div
+				%b
+					Email:
+				=@contributor.email
+		%div
+			%b
+				Packages authored in:
+			=@authored_packages.count
+		%div
+			%b
+				Packages maintaining:
+			=@maintaining_packages.count
+	%hr
+.container.list
+	%h2.head
+		Authored Packages
+	%div
+		-@authored_packages .each do |package|
+			.col-lg-2.col-md-2
+				.package
+					=link_to package do 
+						=package.name
+.container.list
+	%h2.head
+		Maintaining Packages
+	%div
+		-@maintaining_packages.each do |package|
+			.col-lg-2.col-md-2
+				.package
+					=link_to package do 
+						=package.name

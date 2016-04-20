@@ -1,0 +1,8 @@
+.container
+	-@packages.each do |package|
+		.col-lg-2.col-md-2
+			.package
+				=link_to package do 
+					=package.name
+.container.paginator
+	=will_paginate @packages
