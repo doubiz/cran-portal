@@ -1,0 +1,49 @@
+.container.jumbotron
+  .package-name
+    .name
+      =@package.name
+    .version
+      =@package.version
+  .package-title
+    =@package.title
+  .clear
+  %hr
+  .extras
+    .info
+      -["description", "dependencies", "imports", "license"].each do |attr|
+        -if @package.send(attr)
+          %div
+            %b
+              ="#{attr.camelcase}:"
+            =@package.send(attr)
+      -if @package.date
+        %div
+          %b
+            Published on:
+          =@package.date.to_date
+    .contributors
+      .head
+        Authors
+      -@package.authors.each do |author|
+        .contributor-name
+          =link_to author do
+            =author.name
+            -if author.email.present?
+              ="<#{author.email}>"
+      .head
+        Maintainers
+      -@package.maintainers.each do |maintainer|
+        .contributor-name
+          =link_to maintainer do
+            =maintainer.name
+            -if maintainer.email.present?
+              ="<#{maintainer.email}>"
+    .clear
+  %hr
+  .versions
+    %h4
+      Versions
+    %div
+      -@package.versions.each do |package|
+        =link_to package do
+          =package.version

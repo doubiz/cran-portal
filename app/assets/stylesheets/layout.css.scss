@@ -1,0 +1,46 @@
+.header{
+	width:100%;
+	height:70px;
+	background-color: black;
+	position:fixed;
+	top:0;
+	z-index: 1000;
+	.searchbar{
+		margin-top: 20px;
+	}
+}
+
+.content{
+	margin-top:80px;
+}
+
+body{
+	background-color:#CAC2C2
+}
+
+.paginator{
+	text-align:center;
+	font-size: 18px;
+	font-color:black;
+}
+
+.brand{
+	position:absolute;
+	color:white;
+	font-size:20px;
+	top:20px;
+	a{
+		color:white;
+		text-decoration: none;
+	}
+}
+
+#q{
+	width: 400px;
+	display:inline-block;
+}
+#submit{
+	width: 100px;
+	display:inline-block;
+	margin-left:-2px;
+}

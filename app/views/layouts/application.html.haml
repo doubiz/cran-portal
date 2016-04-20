@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title FyberApi
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .header
+      .container
+        .brand
+          =link_to '/' do
+            CRAN
+        .col-lg-6.col-lg-offset-3.searchbar
+          .input-group
+            =form_tag('/packages', {:method => :get}) do
+              =text_field_tag :q, '',class:'form-control', placeholder: "Search for packages", autocomplete: :off
+            
+              =button_tag 'Search' , id: "submit", class: "btn btn-primary btn-block", type: :submit
+    .content
+      = yield
