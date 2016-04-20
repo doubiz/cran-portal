@@ -4,6 +4,11 @@ A Ruby application that indexs the packages in a CRAN server
 
 The application is built over Ruby on Rails. I've built 2 scraper classes that scrap the Cran server to get all the data about the packages. The data is then stored in mysql server so that they can be displayed on the portal.
 
+#Challenges
+
+1-Parsing author names appears as a challenge because the way of presentation is not consistent.
+
+
 # Technologies
 
 * Ruby on Rails
