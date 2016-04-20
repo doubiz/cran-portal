@@ -53,15 +53,13 @@ class PackageScraper
     CONTRIBUTORS_KEYS.each do |key|
       if hash[key].present?
         contributors = hash[key].encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
-                        .gsub(/\[[a-zA-Z]*,*\s*[a-zA-Z]*\]/,"").split(/\sand\s|,/)
-        if contributors.present?
-          contributors.each do |contributor|
-            splitted = contributor.split("<")
-            name = splitted[0].split("[")[0].strip
-            email = splitted[1].split(">")[0].downcase.strip if splitted[1].present?
-            created_contributor = Contributor.find_or_create( name, email || nil)
-            key.starts_with?("A") ? @authors << created_contributor : @maintainers << created_contributor
-          end
+                        .gsub(/\[[a-zA-Z]*,*\s*[a-zA-Z]*\]/,"").split(/\sand\s|,/).reject! { |c| !c.present? }
+        contributors.each do |contributor|
+          splitted = contributor.split("<")
+          name = splitted[0].split("[")[0].strip
+          email = splitted[1].split(">")[0].downcase.strip if splitted[1].present?
+          created_contributor = Contributor.find_or_create( name, email || nil)
+          key.starts_with?("A") ? @authors << created_contributor : @maintainers << created_contributor
         end
       end
     end
