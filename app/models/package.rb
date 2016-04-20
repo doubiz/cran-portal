@@ -3,6 +3,7 @@ class Package < ActiveRecord::Base
   FILE_EXT = ".tar.gz"
   #Validations
   validates_presence_of :name, :version
+  validates :name, uniqueness: { scope: :version}
 
   #Relations
   has_many :package_contributors
