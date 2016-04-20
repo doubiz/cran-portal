@@ -45,5 +45,8 @@
       Versions
     %div
       -@package.versions.each do |package|
-        =link_to package do
-          =package.version
+        %div
+          =link_to package do
+            =package.version
+          =link_to package.url do
+            ="download"

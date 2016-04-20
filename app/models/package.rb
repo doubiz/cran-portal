@@ -1,4 +1,6 @@
 class Package < ActiveRecord::Base
+  BASE_URL = "http://cran.r-project.org/src/contrib/"
+  FILE_EXT = ".tar.gz"
   #Validations
   validates_presence_of :name, :version
 
@@ -12,4 +14,7 @@ class Package < ActiveRecord::Base
     Package.where(name: self.name)
   end
 
+  def url
+    BASE_URL + name + "_" + version + FILE_EXT
+  end
 end
