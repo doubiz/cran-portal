@@ -4,7 +4,7 @@ require "dcf"
 class PackageScraper
   BASE_URL = "http://cran.r-project.org/src/contrib/"
   FILE_EXT = ".tar.gz"
-  Description_FILE_NAME = "DESCRIPTION"
+  DESCRIPTION_FILE_NAME = "DESCRIPTION"
   DICTIONARY = {"Package" => "name", "Version" => "version", "Depends" => "dependencies", "Import" => "imports",
                 "Title" => "title", "Description" => "description", "License" => "license", "Date" => "date",
                 "Publication" => "date", "Date/Publication" => "date"}
@@ -76,7 +76,7 @@ class PackageScraper
     raise "Error in request" unless res.code == "200"
     extracted_tar = Gem::Package::TarReader.new(Zlib::GzipReader.new(StringIO.new(res.body.to_s)))
     extracted_tar.each do |entry|
-      if entry.full_name.split("/")[1] == Description_FILE_NAME
+      if entry.full_name.split("/")[1] == DESCRIPTION_FILE_NAME
         return Dcf.parse(entry.read)[0]
       end
     end
