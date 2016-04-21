@@ -20,7 +20,7 @@ The application is built over Ruby on Rails. I've built 2 scraper classes that s
 
 2- `rake db:setup`
 
-3- `whenever -s` to set cron job to run at 12pm everyday
+3- `whenever -w` to set cron job to run at 12pm everyday
 
 # Running Tests
 run command `rspec` in root directory
